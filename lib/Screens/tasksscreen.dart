@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../Widgets/Addtask.dart';
 import '../Widgets/Taskview.dart';
 
 class TasksScreen extends StatelessWidget {
-  TasksScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(bottom: 30, right: 30),
+        child: FloatingActionButton(
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context, builder: (context) => Addtask());
+            },
+            child: Icon(Icons.add)),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,18 +64,6 @@ class TasksScreen extends StatelessWidget {
             ),
           ))
         ],
-      ),
-      floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: 30, right: 30),
-        child: FloatingActionButton(
-            onPressed: () {
-              showBottomSheet(
-                  context: context,
-                  builder: (context) => Container(
-                        color: Colors.white,
-                      ));
-            },
-            child: Icon(Icons.add)),
       ),
     );
   }
